@@ -12,6 +12,10 @@ class LocationTableViewController: UITableViewController {
     
     var weatherLocationStore: WeatherLocationStore!
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weatherLocationStore.allLocations.count
@@ -33,4 +37,25 @@ class LocationTableViewController: UITableViewController {
         
         return cell
     }
-}
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //Check segue name
+        
+        if segue.identifier == "locationDetail" {
+            
+            //Figure out which row was selected
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let tappedLocatoin = weatherLocationStore.allLocations[row]
+                
+                let detailViewController = segue.destinationViewController as! LocationDetailViewController
+                
+                detailViewController.thisLocation = tappedLocatoin
+                
+                
+            } // end if let
+            
+        }// end if segue
+    } // end prepareForSegue
+
+} // end of class

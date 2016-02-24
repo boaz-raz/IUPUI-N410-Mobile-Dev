@@ -31,7 +31,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="R3a-xr-hp7" kind="show" id="mxw-A8-qEb"/>
+                                    <segue destination="R3a-xr-hp7" kind="show" identifier="locationDetail" id="mxw-A8-qEb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -40,7 +40,13 @@
                             <outlet property="delegate" destination="eAK-VU-a8E" id="wX6-Qc-VTL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vVx-KL-nMd"/>
+                    <navigationItem key="navigationItem" id="vVx-KL-nMd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="m31-eQ-GWo">
+                            <connections>
+                                <segue destination="UWi-Kx-fYZ" kind="presentation" id="zTc-TG-WdI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKx-sQ-gx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +73,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indianapolis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHp-1s-UE6">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="91" height="21"/>
@@ -83,7 +89,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aI9-8o-a0Y">
                                                 <rect key="frame" x="0.0" y="450" width="600" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="316" width="91" height="21"/>
@@ -100,7 +106,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByV-pb-cxV">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="66"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="509" height="168"/>
@@ -115,7 +121,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 mph with gsts up tp 104 mph" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js1-gw-QcP">
                                                 <rect key="frame" x="300" y="0.0" width="300" height="66"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="168" width="509" height="168"/>
@@ -147,10 +153,13 @@
                     <navigationItem key="navigationItem" title="Title" id="8Ed-sU-anZ">
                         <barButtonItem key="rightBarButtonItem" title="Forcast" id="ZgY-xw-DhI">
                             <connections>
-                                <segue destination="rzP-mW-6oF" kind="show" id="jTl-lG-JlK"/>
+                                <segue destination="rzP-mW-6oF" kind="show" identifier="locationForecast" id="jTl-lG-JlK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="areaLabel" destination="gHp-1s-UE6" id="2Bu-DI-B7E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWi-av-bS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1s-v6-usc">
-                                <rect key="frame" x="28" y="143" width="67" height="21"/>
+                                <rect key="frame" x="28" y="143" width="189" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -177,10 +186,48 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="areaLabel" destination="m1s-v6-usc" id="eXO-iw-GSA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJV-kk-voq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2491" y="499"/>
+        </scene>
+        <!--Add Location View Controller-->
+        <scene sceneID="cHr-lh-p51">
+            <objects>
+                <viewController id="44T-7Q-sOC" customClass="AddLocationViewController" customModule="JagWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IBX-Zg-3KU"/>
+                        <viewControllerLayoutGuide type="bottom" id="fMn-US-Ymb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="INu-Zl-JkL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0JT-et-8hR">
+                                <rect key="frame" x="20" y="133" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oLv-ja-R2D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BNc-ts-4lc">
+                            <connections>
+                                <action selector="btnSave:" destination="44T-7Q-sOC" id="3LF-Ca-oWa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textName" destination="0JT-et-8hR" id="cZo-7h-tAa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRz-Cj-Ok7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2623" y="-172"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wtx-Bi-Wbj">
@@ -199,6 +246,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jk8-Aq-uBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="315" y="499"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ADw-AT-qC2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UWi-Kx-fYZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBI-Lq-7ri">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="44T-7Q-sOC" kind="relationship" relationship="rootViewController" id="kwM-3f-1A6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5Y-Y5-lj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811" y="-172"/>
         </scene>
     </scenes>
 </document>

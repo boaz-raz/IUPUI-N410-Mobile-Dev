@@ -16,6 +16,7 @@
 		73BDB7AF1C73D37D008E5948 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDB7AE1C73D37D008E5948 /* ForecastViewController.swift */; };
 		73BDB7B11C73D3B8008E5948 /* WeatherLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */; };
 		73BDB7B31C73D573008E5948 /* WeatherLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */; };
+		AF1650AB1C7E5D1900151F1E /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1650AA1C7E5D1900151F1E /* AddLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		73BDB7AE1C73D37D008E5948 /* ForecastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocation.swift; sourceTree = "<group>"; };
 		73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationStore.swift; sourceTree = "<group>"; };
+		AF1650AA1C7E5D1900151F1E /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				73BDB7981C73D1E7008E5948 /* AppDelegate.swift */,
 				73BDB79C1C73D1E7008E5948 /* Main.storyboard */,
+				AF1650AA1C7E5D1900151F1E /* AddLocationViewController.swift */,
 				73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */,
 				73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */,
 				73BDB79F1C73D1E7008E5948 /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				73BDB7B11C73D3B8008E5948 /* WeatherLocation.swift in Sources */,
 				73BDB7B31C73D573008E5948 /* WeatherLocationStore.swift in Sources */,
 				73BDB7AB1C73D325008E5948 /* LocationTableViewController.swift in Sources */,
+				AF1650AB1C7E5D1900151F1E /* AddLocationViewController.swift in Sources */,
 				73BDB7AF1C73D37D008E5948 /* ForecastViewController.swift in Sources */,
 				73BDB7AD1C73D350008E5948 /* LocationDetailViewController.swift in Sources */,
 				73BDB7991C73D1E7008E5948 /* AppDelegate.swift in Sources */,
@@ -300,6 +304,7 @@
 				73BDB7A91C73D1E7008E5948 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
