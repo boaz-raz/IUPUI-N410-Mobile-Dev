@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" id="vVx-KL-nMd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m31-eQ-GWo">
                             <connections>
-                                <segue destination="UWi-Kx-fYZ" kind="presentation" id="zTc-TG-WdI"/>
+                                <segue destination="Y5X-5e-4E1" kind="presentation" id="MPF-t4-9ta"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -165,6 +165,41 @@
             </objects>
             <point key="canvasLocation" x="1826" y="499"/>
         </scene>
+        <!--Add Location Tabel View Controller-->
+        <scene sceneID="DKd-aK-nxt">
+            <objects>
+                <tableViewController id="XMn-UG-EdL" customClass="AddLocationTabelViewController" customModule="JagWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GgZ-7H-LmM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CWi-b8-eSM">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CWi-b8-eSM" id="0YA-V1-LNR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XMn-UG-EdL" id="Sd8-C4-2Fg"/>
+                            <outlet property="delegate" destination="XMn-UG-EdL" id="xfq-s9-4xL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="5PC-t6-sRO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gbB-0K-pEV">
+                            <connections>
+                                <action selector="btnDone:" destination="XMn-UG-EdL" id="7wh-t4-AsN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e4Z-zG-IRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3241" y="-173"/>
+        </scene>
         <!--Forecast View Controller-->
         <scene sceneID="rCl-9s-LKE">
             <objects>
@@ -194,41 +229,6 @@
             </objects>
             <point key="canvasLocation" x="2491" y="499"/>
         </scene>
-        <!--Add Location View Controller-->
-        <scene sceneID="cHr-lh-p51">
-            <objects>
-                <viewController id="44T-7Q-sOC" customClass="AddLocationViewController" customModule="JagWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IBX-Zg-3KU"/>
-                        <viewControllerLayoutGuide type="bottom" id="fMn-US-Ymb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="INu-Zl-JkL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0JT-et-8hR">
-                                <rect key="frame" x="20" y="133" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="oLv-ja-R2D">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BNc-ts-4lc">
-                            <connections>
-                                <action selector="btnSave:" destination="44T-7Q-sOC" id="3LF-Ca-oWa"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="textName" destination="0JT-et-8hR" id="cZo-7h-tAa"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qRz-Cj-Ok7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2623" y="-172"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wtx-Bi-Wbj">
             <objects>
@@ -248,22 +248,22 @@
             <point key="canvasLocation" x="315" y="499"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ADw-AT-qC2">
+        <scene sceneID="Xhg-Dm-nCf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UWi-Kx-fYZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y5X-5e-4E1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBI-Lq-7ri">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9pS-gG-94c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="44T-7Q-sOC" kind="relationship" relationship="rootViewController" id="kwM-3f-1A6"/>
+                        <segue destination="XMn-UG-EdL" kind="relationship" relationship="rootViewController" id="rsm-AI-Ilw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r5Y-Y5-lj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8S-qK-zHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811" y="-172"/>
+            <point key="canvasLocation" x="2429" y="-173"/>
         </scene>
     </scenes>
 </document>
