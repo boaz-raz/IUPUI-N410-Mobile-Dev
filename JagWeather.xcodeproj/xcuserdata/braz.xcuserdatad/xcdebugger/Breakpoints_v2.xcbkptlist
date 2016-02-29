@@ -17,6 +17,53 @@
             endingLineNumber = "15"
             landmarkName = "WeatherLocationStore"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_4E4DCCB180598921DBB5C53788421290_func0"
+                  moduleName = "JagWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/braz/Library/Mobile%20Documents/com~apple~CloudDocs/Documents/IUPUI/CSCI-N410-Mobile-development/JagWeather/JagWeather/WeatherLocationStore.swift"
+                  timestampString = "478413362.416341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JagWeather.WeatherLocationStore.sharedInstance.unsafeMutableAddressor : JagWeather.WeatherLocationStore"
+                  moduleName = "JagWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/braz/Library/Mobile%20Documents/com~apple~CloudDocs/Documents/IUPUI/CSCI-N410-Mobile-development/JagWeather/JagWeather/WeatherLocationStore.swift"
+                  timestampString = "478413362.417231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static JagWeather.WeatherLocationStore.sharedInstance.getter : JagWeather.WeatherLocationStore"
+                  moduleName = "JagWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/braz/Library/Mobile%20Documents/com~apple~CloudDocs/Documents/IUPUI/CSCI-N410-Mobile-development/JagWeather/JagWeather/WeatherLocationStore.swift"
+                  timestampString = "478413362.417352"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

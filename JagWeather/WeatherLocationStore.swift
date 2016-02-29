@@ -16,12 +16,19 @@ class WeatherLocationStore {
     
     private init() {
         
-        let indianapolis = WeatherLocation(name: "Indianapolis, IN", city: "Indianapolis", state: "IN", country: "US", latitude: 39.77510452, longitude: -86.10947418, elevation: 238.0, zmw: "46201.1.99999")
+        // default objects are ONLY created IF there are less than 2 objects already in the collection.
         
-        let austin = WeatherLocation(name: "Austin, TX", city: "Austin", state: "TX", country: "US", latitude: 30.280539, longitude: 97.754555, elevation: 167.0, zmw: "8701.1.99999")
+        if (allLocations.count <= 2 ) {
+            let indianapolis = WeatherLocation(name: "Indianapolis, IN", city: "Indianapolis", state: "IN", country: "US", latitude: 39.77510452, longitude: -86.10947418, elevation: 238.0, zmw: "46201.1.99999")
+            
+            let austin = WeatherLocation(name: "Austin, TX", city: "Austin", state: "TX", country: "US", latitude: 30.280539, longitude: 97.754555, elevation: 167.0, zmw: "8701.1.99999")
+            
+            allLocations.append(indianapolis)
+            allLocations.append(austin)
         
-        allLocations.append(indianapolis)
-        allLocations.append(austin)
+        }
+        
+      
         
         
         // CODE CHUNK 3:

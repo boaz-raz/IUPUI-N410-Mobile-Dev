@@ -12,6 +12,9 @@ class LocationTableViewController: UITableViewController {
     
     var weatherLocationStore: WeatherLocationStore!
     
+    // var for delete index path
+    var deleteLocationIndexPath: NSIndexPath? = nil
+    
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
     }
@@ -36,7 +39,40 @@ class LocationTableViewController: UITableViewController {
         
         
         return cell
-    }
+        
+        
+        
+        
+        // func to confirm delete
+        func confirmDelete(planet: String) {
+            let alert = UIAlertController(title: "Delete Location", message: "Are you sure you want to permanently delete \(WeatherLocation.name)?", preferredStyle: .ActionSheet)
+            
+            let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeletePlanet)
+            let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeletePlanet)
+            
+            alert.addAction(DeleteAction)
+            alert.addAction(CancelAction)
+            
+            
+            // Support display in iPad
+            
+            //alert.popoverPresentationController?.sourceView = self.view
+            //alert.popoverPresentationController?.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        } // end confirmDelete fun
+        
+        
+        func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+            if editingStyle == .Delete {
+                deleteLocationIndexPath = indexPath
+                let locationToDelete = weatherLocationStore.allLocations[indexPath.row]
+                //confirmDelete(planetToDelete)
+            }
+        } // ent
+        
+    } // end of tableView fun
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
