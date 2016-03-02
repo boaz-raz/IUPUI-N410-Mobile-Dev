@@ -25,7 +25,15 @@ class AddLocationTabelViewController: UITableViewController, UISearchResultsUpda
         searchController.hidesNavigationBarDuringPresentation = true
         
         tableView.tableHeaderView = searchController.searchBar
+        
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateReachResultsTable", name: "AutocompleteResults", object: nil)
     }
+    
+    
+    
+    
     
     // Delegate method for UIsearchcontroller
     
@@ -36,10 +44,36 @@ class AddLocationTabelViewController: UITableViewController, UISearchResultsUpda
             
             APIManager.sharedInstance.retrieveAutocompleteData(searchController.searchBar.text!)
         }
+      
         
 
     }
     
+    
+    
+    // ADD function here!!
+    override func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
+//        APIManager.sharedInstance.retrieveAutocompleteData()
+    }
+    
+
+    
+    // TABLE VIEW METHODS
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+            let cell = tableView.dequeueReusableCellWithIdentifier("locationTableResusblleCell", forIndexPath: indexPath)
+            
+            let possibleLocation = APIManager.sharedInstance.searchResultLocations[indexPath.row]
+            
+            cell.textLabel!.text = possibleLocation.name
+        
+            return cell
+    }
+    
+    func updatesearchResutabel(){
+        tableView.reloadData()
+    }
+
     
     
 } // END AddLocationTabelViewController

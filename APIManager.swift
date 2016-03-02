@@ -82,6 +82,11 @@ class APIManager: NSObject {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
         
+        
+        
+        // CLEAR OUT THE PREVIOUS SEARCH RESULTS
+        searchResultLocations.removeAll()
+        
         // CHECK DATA FOR ERRORS
         
         if let error = error {
@@ -95,9 +100,38 @@ class APIManager: NSObject {
                 
                 
                 print("AutoComplete data retrieved!")
-                print(data)
+                //print(data)
                 
-            }
+                do {
+                
+                    let jasonData = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                    
+                    if let foundLocations = jasonData["RESULTS"] as? [[String: AnyObject]] {
+                        
+                        for thisLocation in foundLocations {
+                            //print(thisLocation)
+                            
+                            let newLocation = PossibleWeatherLocation(name: thisLocation["name"]! as? String, country: thisLocation["c"]! as? String, latitude: thisLocation["lat"]! as? Double, longitude: thisLocation["lon"]! as? Double, zmw: thisLocation["zmw"]! as? String)
+                            
+                            searchResultLocations.append(newLocation)
+
+                        }
+                        
+                        print("Found \(searchResultLocations.count) Locations")
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            NSNotificationCenter.defaultCenter().postNotificationName("AutocompleteResults", object: self)
+                        }
+                        
+                    } // END LOOP
+                    
+                }  catch {
+                    print("Error serilizing JASON: \(error)")
+                }
+                
+                
+                
+                }
             
         } // END processAutoCompleteData
         
