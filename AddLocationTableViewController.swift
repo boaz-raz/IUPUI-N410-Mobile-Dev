@@ -64,7 +64,33 @@ class AddLocationTabelViewController: UITableViewController, UISearchResultsUpda
         cell.textLabel!.text = possibleLocation.name
         
         return cell
+    
+        
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("I clicked a table cell")
+        
+         //FIGUE OUT WHICH ROW (CELL) WAS CLICKED
+        if let selectedRow = tableView.indexPathForSelectedRow?.row {
+            print("row is \(selectedRow)")
+            
+            //GET THE POSSIBLE WATHER LOCATION THAT CORESPONDS TO THAT CELL
+            print(APIManager.sharedInstance.searchResultLocations[selectedRow])
+        }
+        
+       
+        
+        
+        
+        //TELL APIMANAGER TO GET THE GEO LOCATION INFO FOR THIS POSSIBLE WEATHER LOCATION 
+        
+        // DISMISS THE ADD LOCATION TABLE VIEW
+        searchController.active = false
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
     func updateSearchResultsTable() {
         tableView.reloadData()
