@@ -68,7 +68,7 @@ class APIManager: NSObject {
         
         // START THE DATA RETRIEVAL IN A BACKGROUND THREAD
         
-        dataTask?.resume()
+        dataTask!.resume()
         
     }
     

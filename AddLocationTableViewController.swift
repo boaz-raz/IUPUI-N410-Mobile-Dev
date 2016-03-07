@@ -28,49 +28,45 @@ class AddLocationTabelViewController: UITableViewController, UISearchResultsUpda
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateReachResultsTable", name: "AutocompleteResults", object: nil)
+        //LISTEN FOR NOTIFICATION
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: "updateSearchResultsTable", name: "AutocompleteResults",object:nil)
+        
+        
     }
     
     
-    
-    
-    
-    // Delegate method for UIsearchcontroller
-    
+    //DELEGATE METHOD FOR UISEARCHRESULTSUPDATING
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        print("\(searchController.searchBar.text)")
+        print("\(searchController.searchBar.text!)")
         
-        if (searchController.searchBar.text!.characters.count) > 2{
-            
+        //Call APIManager and Search
+        if (searchController.searchBar.text!.characters.count) > 2 {
             APIManager.sharedInstance.retrieveAutocompleteData(searchController.searchBar.text!)
+            
+            //CAN'T RELOAD TABLE DATA HERE
         }
-      
         
-
     }
     
+    //TABLE VIEW METHODS
     
-    
-    // ADD function here!!
-    override func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
-//        APIManager.sharedInstance.retrieveAutocompleteData()
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return APIManager.sharedInstance.searchResultLocations.count
     }
     
-
-    
-    // TABLE VIEW METHODS
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-            let cell = tableView.dequeueReusableCellWithIdentifier("locationTableResusblleCell", forIndexPath: indexPath)
-            
-            let possibleLocation = APIManager.sharedInstance.searchResultLocations[indexPath.row]
-            
-            cell.textLabel!.text = possibleLocation.name
+        let cell = tableView.dequeueReusableCellWithIdentifier("locationTableReusableCell", forIndexPath: indexPath)
         
-            return cell
+        let possibleLocation = APIManager.sharedInstance.searchResultLocations[indexPath.row]
+        
+        cell.textLabel!.text = possibleLocation.name
+        
+        return cell
     }
     
-    func updatesearchResutabel(){
+    func updateSearchResultsTable() {
         tableView.reloadData()
     }
 
