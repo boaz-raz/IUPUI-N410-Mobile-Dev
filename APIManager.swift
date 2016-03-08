@@ -1,10 +1,7 @@
 //
 //  APIManager.swift
 //  JagWeather
-//
-//  Created by Boaz Raz on 2/29/16.
-//  Copyright © 2016 Rob Elliott. All rights reserved.
-//
+//  Copyright © 2016 Boaz Raz. All rights reserved.
 
 import UIKit
 

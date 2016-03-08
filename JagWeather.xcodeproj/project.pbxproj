@@ -33,8 +33,8 @@
 		73BDB7AE1C73D37D008E5948 /* ForecastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocation.swift; sourceTree = "<group>"; };
 		73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationStore.swift; sourceTree = "<group>"; };
-		AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationTableViewController.swift; sourceTree = "<group>"; };
-		AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddLocationTableViewController.swift; path = ../AddLocationTableViewController.swift; sourceTree = "<group>"; };
+		AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = ../APIManager.swift; sourceTree = "<group>"; };
 		AFBC3A671C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountains_bad_weather_gray_green_track_42443_640x960.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,8 +52,6 @@
 		73BDB78C1C73D1E7008E5948 = {
 			isa = PBXGroup;
 			children = (
-				AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */,
-				AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */,
 				73BDB7971C73D1E7008E5948 /* JagWeather */,
 				73BDB7961C73D1E7008E5948 /* Products */,
 			);
@@ -70,6 +68,8 @@
 		73BDB7971C73D1E7008E5948 /* JagWeather */ = {
 			isa = PBXGroup;
 			children = (
+				AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */,
+				AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */,
 				73BDB7981C73D1E7008E5948 /* AppDelegate.swift */,
 				73BDB79C1C73D1E7008E5948 /* Main.storyboard */,
 				73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */,
