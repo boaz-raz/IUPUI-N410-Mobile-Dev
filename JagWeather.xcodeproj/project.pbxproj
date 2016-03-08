@@ -18,6 +18,7 @@
 		73BDB7B31C73D573008E5948 /* WeatherLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */; };
 		AF8CA3091C84F33E00D88D4C /* AddLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */; };
 		AF8CA30B1C84F9ED00D88D4C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */; };
+		AFBC3A681C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFBC3A671C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationStore.swift; sourceTree = "<group>"; };
 		AF8CA3081C84F33E00D88D4C /* AddLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationTableViewController.swift; sourceTree = "<group>"; };
 		AF8CA30A1C84F9ED00D88D4C /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		AFBC3A671C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountains_bad_weather_gray_green_track_42443_640x960.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				73BDB79C1C73D1E7008E5948 /* Main.storyboard */,
 				73BDB7B01C73D3B8008E5948 /* WeatherLocation.swift */,
 				73BDB7B21C73D573008E5948 /* WeatherLocationStore.swift */,
+				AFBC3A671C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg */,
 				73BDB79F1C73D1E7008E5948 /* Assets.xcassets */,
 				73BDB7A11C73D1E7008E5948 /* LaunchScreen.storyboard */,
 				73BDB7A41C73D1E7008E5948 /* Info.plist */,
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBC3A681C8F5DD300773656 /* mountains_bad_weather_gray_green_track_42443_640x960.jpg in Resources */,
 				73BDB7A31C73D1E7008E5948 /* LaunchScreen.storyboard in Resources */,
 				73BDB7A01C73D1E7008E5948 /* Assets.xcassets in Resources */,
 				73BDB79E1C73D1E7008E5948 /* Main.storyboard in Resources */,
