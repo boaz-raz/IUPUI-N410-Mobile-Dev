@@ -22,6 +22,20 @@ class LocationDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         areaLabel.text = thisLocation.name
+        
+        print(thisLocation.city)
+        
+        //APIManager.sharedInstance.retrieveConditionData(thisLocation.zmw)
+        
+        
+        // SET UP OURSELVES AS A LISTENER FOR ConditionResults NOTIFICATION
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "updateConditions",
+            name: "ConditionResults",
+            object: nil)
+        
+    
     } // end viewWillAppear
     
     

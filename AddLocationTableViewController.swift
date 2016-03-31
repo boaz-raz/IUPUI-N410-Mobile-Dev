@@ -82,8 +82,7 @@ class AddLocationTabelViewController: UITableViewController, UISearchResultsUpda
             let tappedPossibleLocation = APIManager.sharedInstance.searchResultLocations[selectedRow]
             
             // TELL APIMANAGER TO GET THE GEOLOOKUP INFO FOR THIS POSSIBLE WEATHER LOCATION
-            
-//            APIManager.sharedInstance.retrieveGeolookupData(tappedPossibleLocation.zmw!)
+            APIManager.sharedInstance.retrieveGeolookupData(tappedPossibleLocation.zmw!)
             
             // DISMISS THE ADD LOCATION TABLE VIEW
             searchController.active = false

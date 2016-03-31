@@ -15,8 +15,31 @@ class LocationTableViewController: UITableViewController {
     // var for delete index path
     var deleteLocationIndexPath: NSIndexPath? = nil
     
-    override func viewWillAppear(animated: Bool) {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // LISTEN FOR NOTIFICATION
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "refreshTable",
+            name: "GeolookupResults",
+            object: nil)
+    }
+    
+    func refreshTable() {
         tableView.reloadData()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        print(WeatherLocationStore.sharedInstance.allLocations.count)
+
+        tableView.reloadData()
+        
+        
     }
     
     
