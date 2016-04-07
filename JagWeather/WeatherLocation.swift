@@ -2,8 +2,8 @@
 //  WeatherLocation.swift
 //  JagWeather
 //
-// 
-//  Copyright © 2016 Boaz Raz. All rights reserved.
+//  Created by Rob Elliott on 2/16/16.
+//  Copyright © 2016 Rob Elliott. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,7 @@ class WeatherLocation: NSObject, NSCoding {
         super.init()
     }
     
+    
     init (name: String) {
         self.name = name
         self.city = ""
@@ -43,6 +44,7 @@ class WeatherLocation: NSObject, NSCoding {
         
         super.init()
     }
+    
     
     // CODE CHUNK 1:
     // THE FOLLOWING METHODS ALLOW THE WEATHERLOCATION CLASS TO ENCODE AND DECODE INSTANCES SO THAT THEY CAN BE ARCHIVED
@@ -72,4 +74,8 @@ class WeatherLocation: NSObject, NSCoding {
         
         zmw = aDecoder.decodeObjectForKey("zmw") as! String
     }
+
+    
+    
+    
 }

@@ -3,7 +3,7 @@
 //  JagWeather
 //
 //  Created by Elliott, Rob on 2/29/16.
-//  Copyright © 2016 Boaz Raz. All rights reserved.
+//  Copyright © 2016 Rob Elliott. All rights reserved.
 //
 
 import UIKit

@@ -3,7 +3,7 @@
 //  JagWeather
 //
 //  Created by Elliott, Rob on 2/29/16.
-//  Copyright © 2016 Boaz Raz. All rights reserved.
+//  Copyright © 2016 Rob Elliott. All rights reserved.
 //
 
 import UIKit
@@ -34,6 +34,8 @@ class APIManager: NSObject {
     // DECLARE THE URL THAT WILL BE THE BASE OF OUR GEOLOOKUP
     let geolookupURLString: String = "https://api.wunderground.com/api/4009a293c3e11ed0/geolookup/q/zmw="
     
+    // DECLARE THE URL THAT WILL BE THE BASE OF OUR CONDITIONS LOOKUP
+    let conditionsURLString: String = "https://api.wunderground.com/api/4009a293c3e11ed0/conditions/q/"
     
     // OBJECT FOR SENDING AND RECEIVING HTTP REQUESTS
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -263,8 +265,106 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
     }// END processGeolookupData
     
     
-    
-    
+
+    // THIS FUNCTION WILL INITIATE THE CALL TO THE API FOR GEOLOOKUP
+    func retrieveConditionData(zmw: String) {
+        
+        // CANCEL ANY EXISTING CALLS TO THE API
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        
+        // SHOW THE USER THE NETWORK ACTIVITY INDICATOR
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        // BUILD OUR QUERY
+        
+        //        let expectedCharset = NSCharacterSet.URLQueryAllowedCharacterSet()
+        //
+        //        let searchTerm = searchText.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharset)!
+        
+        let requestURL:NSURL = NSURL(string: "\(conditionsURLString)\(zmw).json")!
+        
+        
+        // SET UP THE DATA RETRIEVAL TASK AND WRITE THE CODE TO EXECUTE WHEN THE TRANSACTION IS COMPLETE
+        
+        dataTask = defaultSession.dataTaskWithURL(requestURL, completionHandler: processConditionData)
+        
+        
+        // START THE DATA RETRIEVAL IN A BACKGROUND THREAD
+        dataTask!.resume()
+        
+    }
+
+
+    // THIS FUNCTION TAKES IN THE "data" FROM THE CONDITION API AND PROCESSES IT
+    func processConditionData (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void {
+        
+        // THIS HAS TO CALL THE MAIN THREAD BECAUSE UI ACTIVITY ALWAYS HAPPENS ON THE MAIN THREAD
+        dispatch_async(dispatch_get_main_queue()) {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        }
+
+        
+        // CHECK DATA FOR ERRORS
+        
+        if let error = error {
+            
+            print("Condition error ALERT HELP CRAP  \(error.localizedDescription)")
+            
+        }
+            
+        else if let httpResponse = response as? NSHTTPURLResponse {
+            if httpResponse.statusCode == 200 { // THIS IS THE CODE FOR A VALID, COMPLETE RESPONSE
+                
+                
+                print("Condition data retrieved!")
+                //print(data)
+                
+                // DECLARE AN NSDICTIONARY THAT WILL HOLD WHATHEVER CONTIOND DATE WE WAN TO PASS
+                var conditionDictionary: [String:String] = [:]
+                
+                
+                do {
+                    // PARSE RETURNED DATA INTO JSON
+                    let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                    
+                    if let thisCondition = jsonData.objectForKey("current_observation") as? [String:AnyObject] {
+                        
+                        print(thisCondition["temp_f"] as! Double)
+                        
+                        conditionDictionary["temp_f"] = String(thisCondition["temp_f"]!) // casting it to String
+                        thisCondition["temp_f"] as! Double
+                        conditionDictionary["wind_string"] = thisCondition["wind_string"] as? String // informing it is a String
+                        conditionDictionary["display_location"] = thisCondition["display_location"]!["full"]! as? String
+                        conditionDictionary["weather"] = thisCondition["weather"] as? String
+                       
+                        
+                        
+                    }
+                    
+                    // PUNT PROCESSING TO MAIN THREAD
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        // POST NOTIFICATION TO NOTIFICATION CENTER
+                        //NSNotificationCenter.defaultCenter().postNotificationName("ConditionResults", object: self)
+                        NSNotificationCenter.defaultCenter().postNotificationName("ConditionResults", object: self, userInfo: conditionDictionary)
+                    }
+                    
+                    
+                    
+                } catch {
+                    print("Error serializing JSON: \(error)")
+                }
+                
+                
+            }
+            
+        }
+        
+        
+    }// END processConditionData
     
     
 

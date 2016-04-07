@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  JagWeather
 //
-// 
-//  Copyright © 2016 Boaz Raz. All rights reserved.
+//  Created by Rob Elliott on 2/16/16.
+//  Copyright © 2016 Rob Elliott. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-
+        
         
         let navController = window!.rootViewController as! UINavigationController
         
@@ -38,14 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
+        
         let success = weatherLocationStore.saveChanges()
         
         if (success) {
-            print("Saved the locatoins!")
-        } else {
-            print("Locations could not be saved")
+            print("Saved the locations!")
         }
+        
+        else {
+            print("Locations could not be saved.")
+        }
+        
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

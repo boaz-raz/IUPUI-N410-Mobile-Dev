@@ -2,59 +2,98 @@
 //  LocationDetailViewController.swift
 //  JagWeather
 //
-//
-//  Copyright © 2016 Boaz Raz. All rights reserved.
+//  Created by Rob Elliott on 2/16/16.
+//  Copyright © 2016 Rob Elliott. All rights reserved.
 //
 
 import UIKit
 
 class LocationDetailViewController: UIViewController {
     
-    @IBOutlet var areaLabel: UILabel!
+    @IBOutlet weak var lblWind: UILabel!
+    @IBOutlet weak var lblCity: UILabel!
+    @IBOutlet weak var lblTemp: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    @IBOutlet weak var lblCondition: UILabel!
     
+
+    @IBOutlet weak var bkImage: UIImageView!
+        
+    @IBOutlet weak var lblText: UILabel!
     var thisLocation: WeatherLocation!
     
-    
-    
-    // show the state location lable
+
     override func viewWillAppear(animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        areaLabel.text = thisLocation.name
         
         print(thisLocation.city)
         
-        //APIManager.sharedInstance.retrieveConditionData(thisLocation.zmw)
+        APIManager.sharedInstance.retrieveConditionData(thisLocation.zmw)
         
         
         // SET UP OURSELVES AS A LISTENER FOR ConditionResults NOTIFICATION
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "updateConditions",
+            selector: "updateConditions:",
             name: "ConditionResults",
             object: nil)
         
+    }
     
-    } // end viewWillAppear
+
+    func updateConditions(notification:NSNotification) {
+        print("I am going to update conditions now!")
+        
+        let conditionData:Dictionary<String,String> = notification.userInfo as! Dictionary<String,String>
+        
+        print(conditionData["temp_f"]!)
+        print(conditionData["wind_string"]!)
+        print(conditionData["display_location"]!)
+        print(conditionData["weather"]!)
+
+        
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        lblCity.text = conditionData["display_location"]
+        lblTemp.text = conditionData["temp_f"]
+        lblWind.text = conditionData["wind_string"]
+        
+        lblText.text = conditionData["temp_f"]
+        lblCondition.text = conditionData["weather"]
         
         
-        if segue.identifier == "locationForecast" {
+        // Change the background image on each diffrent wether condition
+        if(conditionData["weather"] == "Overcast"){
+            lblCondition.text = "Hot" // this lbl is just for testing
+            bkImage.image = UIImage(named: "overcast.jpg")
             
+        } else if (conditionData["weather"] == "Rain"){
+            bkImage.image = UIImage(named: "rain.jpg")
             
-            let forecastViewController = segue.destinationViewController as! ForecastViewController
+        } else if (conditionData["weather"] == "Partly Cloudy") {
             
-            forecastViewController.thisLocation = thisLocation
+            bkImage.image = UIImage(named: "partlyCloudy.jpg")
             
+        } else if (conditionData["weather"] == "Clear") {
             
+            bkImage.image = UIImage(named: "clear.jpg")
             
+        } else if (conditionData["weather"] == "Mostly Cloudy") {
+
+            bkImage.image = UIImage(named: "mostlyCloudy.jpg")
             
-        } // end if
+        } else if (conditionData["weather"] == "Snow") {
+            
+            bkImage.image = UIImage(named: "snow.jpg")
+            
+        } else if (conditionData["weather"] == "Fog") {
+            
+            bkImage.image = UIImage(named: "fog.jpg")
+        } else {
+            bkImage.image = UIImage(named: "paradise.jpgi")
+        }
+
         
-        
-    } // end prepareForSegue
+        activityIndicator.stopAnimating()
+    }
     
-} // end class
+}
