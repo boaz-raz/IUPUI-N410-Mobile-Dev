@@ -3,7 +3,7 @@
 //  JagWeather
 //
 //  Created by Elliott, Rob on 2/29/16.
-//  Copyright © 2016 Rob Elliott. All rights reserved.
+//  Copyright © 2016 Boaz Raz. All rights reserved.
 //
 
 import UIKit
@@ -339,8 +339,6 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
                         conditionDictionary["wind_string"] = thisCondition["wind_string"] as? String // informing it is a String
                         conditionDictionary["display_location"] = thisCondition["display_location"]!["full"]! as? String
                         conditionDictionary["weather"] = thisCondition["weather"] as? String
-                       
-                        
                         
                     }
                     

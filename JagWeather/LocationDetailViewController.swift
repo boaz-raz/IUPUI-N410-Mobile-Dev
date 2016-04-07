@@ -2,8 +2,8 @@
 //  LocationDetailViewController.swift
 //  JagWeather
 //
-//  Created by Rob Elliott on 2/16/16.
-//  Copyright © 2016 Rob Elliott. All rights reserved.
+//  Created by Boaz Raz on 2/16/16.
+//  Copyright © 2016 Boaz Raz. All rights reserved.
 //
 
 import UIKit
@@ -50,7 +50,6 @@ class LocationDetailViewController: UIViewController {
         print(conditionData["wind_string"]!)
         print(conditionData["display_location"]!)
         print(conditionData["weather"]!)
-
         
     
         lblCity.text = conditionData["display_location"]
@@ -63,7 +62,7 @@ class LocationDetailViewController: UIViewController {
         
         // Change the background image on each diffrent wether condition
         if(conditionData["weather"] == "Overcast"){
-            lblCondition.text = "Hot" // this lbl is just for testing
+            lblCondition.text = conditionData["weather"]
             bkImage.image = UIImage(named: "overcast.jpg")
             
         } else if (conditionData["weather"] == "Rain"){
