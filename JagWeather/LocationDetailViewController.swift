@@ -23,7 +23,6 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var lblText: UILabel!
     var thisLocation: WeatherLocation!
     
-
     override func viewWillAppear(animated: Bool) {
         
         print(thisLocation.city)
