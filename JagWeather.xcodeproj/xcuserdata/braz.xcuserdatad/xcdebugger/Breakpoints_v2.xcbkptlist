@@ -9,13 +9,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JagWeather/LocationTableViewController.swift"
-            timestampString = "481755139.055328"
+            filePath = "JagWeather/APIManager.swift"
+            timestampString = "482554448.935094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "processConditionData(_:response:error:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JagWeather/APIManager.swift"
+            timestampString = "482554448.935094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "processConditionData(_:response:error:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
