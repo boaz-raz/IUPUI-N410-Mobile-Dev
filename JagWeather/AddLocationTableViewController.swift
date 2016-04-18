@@ -2,7 +2,7 @@
 //  AddLocationTableViewController.swift
 //  JagWeather
 //
-//  Created by Elliott, Rob on 2/29/16.
+//  Created by Raz, Boaz on 2/29/16.
 //  Copyright © 2016 Boaz Raz. All rights reserved.
 //
 

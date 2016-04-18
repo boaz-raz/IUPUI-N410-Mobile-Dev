@@ -25,7 +25,7 @@ class LocationDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        print(thisLocation.city)
+        //print(thisLocation.city)
         
         APIManager.sharedInstance.retrieveConditionData(thisLocation.zmw)
         
@@ -41,15 +41,16 @@ class LocationDetailViewController: UIViewController {
     
 
     func updateConditions(notification:NSNotification) {
-        print("I am going to update conditions now!")
+        //print("I am going to update conditions now!")
         
         let conditionData:Dictionary<String,String> = notification.userInfo as! Dictionary<String,String>
         
-        print(conditionData["temp_f"]!)
-        print(conditionData["wind_string"]!)
-        print(conditionData["display_location"]!)
-        print(conditionData["weather"]!)
-        
+        // TESTING
+//        print(conditionData["temp_f"]!)
+//        print(conditionData["wind_string"]!)
+//        //print(conditionData["display_location"]!)
+//        print(conditionData["weather"]!)
+        print(conditionData["display_location"])
     
         lblCity.text = conditionData["display_location"]
         lblTemp.text = conditionData["temp_f"]
@@ -93,5 +94,24 @@ class LocationDetailViewController: UIViewController {
         
         activityIndicator.stopAnimating()
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        if segue.identifier == "locationForecast" {
+            
+            
+            let forecastViewController = segue.destinationViewController as! ForecastViewController
+            
+            forecastViewController.thisLocation = thisLocation
+            
+            
+            
+            
+        } // end if
+        
+        
+    } // end prepareForSegue
     
 }

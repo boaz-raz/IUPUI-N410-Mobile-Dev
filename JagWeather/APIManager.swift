@@ -2,7 +2,7 @@
 //  APIManager.swift
 //  JagWeather
 //
-//  Created by Elliott, Rob on 2/29/16.
+//  Created by Raz, Boaz on 2/29/16.
 //  Copyright © 2016 Boaz Raz. All rights reserved.
 //
 
@@ -36,6 +36,13 @@ class APIManager: NSObject {
     
     // DECLARE THE URL THAT WILL BE THE BASE OF OUR CONDITIONS LOOKUP
     let conditionsURLString: String = "https://api.wunderground.com/api/4009a293c3e11ed0/conditions/q/"
+    
+    
+    // DECLARE THE URL FOR THE FORECAST 
+    let forecastURLString: String = "https://api.wunderground.com/api/4009a293c3e11ed0/forecast/q/"
+    
+    
+        
     
     // OBJECT FOR SENDING AND RECEIVING HTTP REQUESTS
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -103,10 +110,6 @@ class APIManager: NSObject {
             if httpResponse.statusCode == 200 { // THIS IS THE CODE FOR A VALID, COMPLETE RESPONSE
                 
                 
-                print("AutoComplete data retrieved!")
-                //print(data)
-                
-                
                 do {
                     // PARSE RETURNED DATA INTO JSON
                     let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
@@ -126,7 +129,7 @@ class APIManager: NSObject {
                         
                         searchResultLocations.append(newLocation)
                         
-                        //print(thisLocation)
+
                         
                     }
                     
@@ -177,7 +180,7 @@ class APIManager: NSObject {
 //        
 //        let searchTerm = searchText.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharset)!
         
-let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
+    let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
         
         
         // SET UP THE DATA RETRIEVAL TASK AND WRITE THE CODE TO EXECUTE WHEN THE TRANSACTION IS COMPLETE
@@ -216,7 +219,6 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
                 
                 
                 print("Geolookup data retrieved!")
-                //print(data)
                 
                 
                 do {
@@ -294,8 +296,45 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
         
         // START THE DATA RETRIEVAL IN A BACKGROUND THREAD
         dataTask!.resume()
+        print(requestURL)
         
     }
+    
+    
+    
+    // THIS FUNCTION WILL INITIATE THE CALL TO THE API FOR GEOLOOKUP
+    func retrieveFrecastData(zmw: String) {
+        
+        // CANCEL ANY EXISTING CALLS TO THE API
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        
+        // SHOW THE USER THE NETWORK ACTIVITY INDICATOR
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        // BUILD OUR QUERY
+        
+        //        let expectedCharset = NSCharacterSet.URLQueryAllowedCharacterSet()
+        //
+        //        let searchTerm = searchText.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharset)!
+        
+        let requestURL:NSURL = NSURL(string: "\(forecastURLString)\(zmw).json")!
+        
+        // SET UP THE DATA RETRIEVAL TASK AND WRITE THE CODE TO EXECUTE WHEN THE TRANSACTION IS COMPLETE
+        
+        dataTask = defaultSession.dataTaskWithURL(requestURL, completionHandler: processConditionData)
+        
+        print(requestURL)
+        
+        // START THE DATA RETRIEVAL IN A BACKGROUND THREAD
+        dataTask!.resume()
+        
+    }
+    
+    
+    
 
 
     // THIS FUNCTION TAKES IN THE "data" FROM THE CONDITION API AND PROCESSES IT
@@ -319,11 +358,14 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
             if httpResponse.statusCode == 200 { // THIS IS THE CODE FOR A VALID, COMPLETE RESPONSE
                 
                 
-                print("Condition data retrieved!")
+                //print("Condition data retrieved!")
                 //print(data)
                 
                 // DECLARE AN NSDICTIONARY THAT WILL HOLD WHATHEVER CONTIOND DATE WE WAN TO PASS
                 var conditionDictionary: [String:String] = [:]
+                
+                // TEST the forecast feature
+                var conditionForecast: [String:String] = [:]
                 
                 
                 do {
@@ -332,15 +374,40 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
                     
                     if let thisCondition = jsonData.objectForKey("current_observation") as? [String:AnyObject] {
                         
-                        print(thisCondition["temp_f"] as! Double)
+                        //print(thisCondition["temp_f"] as! Double)
                         
                         conditionDictionary["temp_f"] = String(thisCondition["temp_f"]!) // casting it to String
                         thisCondition["temp_f"] as! Double
                         conditionDictionary["wind_string"] = thisCondition["wind_string"] as? String // informing it is a String
-                        conditionDictionary["display_location"] = thisCondition["display_location"]!["full"]! as? String
                         conditionDictionary["weather"] = thisCondition["weather"] as? String
                         
+                        
                     }
+                    
+                    
+                    // PARSE RETURNED DATA OF FORECAST INTO JSON
+                    let jsonData1 = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                   
+                    
+                    if let thisForecast = jsonData1.objectForKey("forecast") as? [String:AnyObject] {
+                        
+
+                        conditionForecast["11"] = thisForecast["txt_forecast"]!["forecastday"]!![2]!["title"]! as? String
+                        conditionForecast["12"] = thisForecast["txt_forecast"]!["forecastday"]!![2]!["fcttext"]! as? String
+                        conditionForecast["13"] = thisForecast["txt_forecast"]!["forecastday"]!![2]!["icon_url"]! as? String
+                        
+                        
+                        conditionForecast["21"] = thisForecast["txt_forecast"]!["forecastday"]!![4]!["title"]! as? String
+                        conditionForecast["22"] = thisForecast["txt_forecast"]!["forecastday"]!![4]!["fcttext"]! as? String
+                        conditionForecast["23"] = thisForecast["txt_forecast"]!["forecastday"]!![4]!["icon_url"]! as? String
+                        
+                        conditionForecast["31"] = thisForecast["txt_forecast"]!["forecastday"]!![6]!["title"]! as? String
+                        conditionForecast["32"] = thisForecast["txt_forecast"]!["forecastday"]!![6]!["fcttext"]! as? String
+                        conditionForecast["33"] = thisForecast["txt_forecast"]!["forecastday"]!![6]!["icon_url"]! as? String
+                        
+                        
+                    }
+                    
                     
                     // PUNT PROCESSING TO MAIN THREAD
                     dispatch_async(dispatch_get_main_queue()) {
@@ -348,6 +415,16 @@ let requestURL:NSURL = NSURL(string: "\(geolookupURLString)\(zmw).json")!
                         // POST NOTIFICATION TO NOTIFICATION CENTER
                         //NSNotificationCenter.defaultCenter().postNotificationName("ConditionResults", object: self)
                         NSNotificationCenter.defaultCenter().postNotificationName("ConditionResults", object: self, userInfo: conditionDictionary)
+                    }
+                    
+                    
+                    
+                    // PUNT PROCESSING TO MAIN THREAD -- FOR FORECAST
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        // POST NOTIFICATION TO NOTIFICATION CENTER
+                        //NSNotificationCenter.defaultCenter().postNotificationName("ConditionResults", object: self)
+                        NSNotificationCenter.defaultCenter().postNotificationName("ForecastResults", object: self, userInfo: conditionForecast)
                     }
                     
                     
